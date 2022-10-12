@@ -1,0 +1,68 @@
+<div class="container-fluid">
+  <div class="submit-form">
+
+    <form [formGroup]="dataForm" (ngSubmit)="saveCompany()">
+      <div class="row">
+        <div class="col-6">
+          <div class="form-group">
+            <label for="englishName">English name</label>
+            <input id="englishName" class="form-control" type="text" formControlName="englishName" placeholder="English name"/>
+            <div class="text-danger" *ngIf="(dataForm.controls['englishName'].touched || isFormSubmitted)&& dataForm.controls['englishName'].errors&& dataForm.controls['englishName'].errors['required'] != null">
+              required
+              </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+
+            <label for="arabicName">Arabic name</label>
+            <input id="arabicName" class="form-control" type="text" formControlName="arabicName" placeholder="arabic name"/>
+            <div class="text-danger" *ngIf="(dataForm.controls['arabicName'].touched || isFormSubmitted)&& dataForm.controls['arabicName'].errors&& dataForm.controls['arabicName'].errors['required'] != null">
+              required
+              </div>
+          </div>
+          </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label for="type">Type</label>
+            <select class="form-control" id="type" name="type" formControlName = "type" placeholder="Type">
+              <option *ngFor="let key of typesArray" [value]="key.id">{{key.value}}</option>
+            </select>
+            <div class="text-danger" *ngIf="(dataForm.controls['type'].touched || isFormSubmitted)&& dataForm.controls['type'].errors&& dataForm.controls['type'].errors['required'] != null">
+              required
+              </div>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success">Submit</button>
+
+    </form>
+    </div>
+</div>
+    <!-- <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="englishName">English name</label>
+        <input type="text" class="form-control" id="englishName" required [(ngModel)]="company.englishName"
+          name="englishName" />
+      </div>
+
+      <div class="form-group">
+        <label for="arabicName">Arabic name</label>
+        <input class="form-control" id="arabicName" required [(ngModel)]="company.arabicName" name="arabicName" />
+      </div>
+
+      <div class="form-group">
+        <label for="type">Type</label>
+        <select class="form-control" id="type" required name="type">
+          <option *ngFor="let key of typesArray" [value]="key.id">{{key.value}}</option>
+        </select>
+      </div> -->
+
+    <!-- </div> -->
+
+    <!-- <div *ngIf="submitted">
+      <h4>Tutorial was submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newCompany()">Add</button>
+    </div> -->
+  <!-- </div>
+</div> -->
