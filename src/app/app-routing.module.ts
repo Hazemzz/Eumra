@@ -7,7 +7,8 @@ import { ListCompanyComponent } from './components/list-company/list-company.com
 const routes: Routes = [
   { path: '', redirectTo: 'tutorials', pathMatch: 'full' },
   { path: 'company', component: ListCompanyComponent },
-  { path: 'company/:id', component: DetailsCompanyComponent },
+  { path: 'details/:id', component: DetailsCompanyComponent },
+  { path: 'update/:id', component: AddCompanyComponent },
   { path: 'add', component: AddCompanyComponent }];
 
 @NgModule({

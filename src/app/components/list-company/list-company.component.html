@@ -1,47 +1,45 @@
-<div class="list row">
-  <div class="col-md-8">
-    <div class="input-group mb-3">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Search by arabic name"
-        [(ngModel)]="arabicName"
-      />
-      <div class="input-group-append">
-        <button
-          class="btn btn-outline-secondary"
-          type="button"
-          (click)="search()">
-          Search
-        </button>
+<div class="container-fluid">
+  <div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search by arabic name" [(ngModel)]="arabicName" />
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" (click)="search()">
+            Search
+          </button>
+        </div>
       </div>
     </div>
+    <div class="col-md-12">
+      <h4>Companies List</h4>
+      <a type="button" class="btn btn-success" [routerLink]="['/add']">Add</a>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">English Name</th>
+            <th scope="col">Arabic Name</th>
+            <th scope="col">Type</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let company of companies; index as i">
+            <td>{{ company.id }}</td>
+            <td>
+                {{ company.englishName }}
+            </td>
+            <td>{{ company.arabicName }}</td>
+            <td>{{ company.type }}</td>
+            <td>
+              <a type="button" class="btn btn-success"(click)="getId(company.id, 0)" >Details</a>
+              <a type="button" class="btn btn-primary"(click)="getId(company.id, 1)" style="margin-left: 5px;">Update</a>
+              <a type="button" class="btn btn-danger" (click)="deleteCompany(company.id)" style="margin-left: 5px;">Delete</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-  <div class="col-md-6">
-    <h4>Companies List</h4>
-    <ul class="list-group">
-      <li
-        class="list-group-item"
-        *ngFor="let company of companies;"
-      >
-        {{ company.arabicName }}
-      </li>
-    </ul>
-
-<!--
-    <table id="users">
-      <tr>
-        <th *ngFor = "let column of headers">
-          {{column}}
-        </th>
-      </tr>
-
-      <tr *ngFor = "let row of rows">
-        <td *ngFor = "let column of headers">
-          {{row}}
-        </td>
-      </tr>
-
-    </table> -->
 
 </div>
